@@ -24,10 +24,16 @@
 ######################################################################
 
 ARCH			:= linux
+# In 1998, uname -m might say i386, i486, i586, etc.
+# So we test for x86_64 first before assuming x86_64 is 32 bit x86.
+ifeq (x86_64,$(findstring x86_64,$(OS_TEST)))
+CPU_ARCH		:= x86_64
+else
 ifeq (86,$(findstring 86,$(OS_TEST)))
 CPU_ARCH		:= x86
 else
 CPU_ARCH		:= $(OS_TEST)
+endif
 endif
 GFX_ARCH		:= x
 

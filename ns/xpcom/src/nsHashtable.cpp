@@ -127,5 +127,5 @@ void *nsHashtable::Remove(nsHashKey *aKey) {
 }
 
 void nsHashtable::Enumerate(nsHashtableEnumFunc aEnumFunc) {
-  PL_HashTableEnumerateEntries(hashtable, _hashEnumerate, aEnumFunc);
+  PL_HashTableEnumerateEntries(hashtable, _hashEnumerate, (void *)aEnumFunc);
 }

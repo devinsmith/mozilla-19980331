@@ -31,7 +31,7 @@ OBJDIR_TAG	= _DBG
 endif
 
 # Name of the binary code directories
-OBJDIR_NAME	= Linux2.0.29_x86_DBG.OBJ
+OBJDIR_NAME	= Linux4.19.0_x86_64_DBG.OBJ
 
 MKDEPEND_DIR    = $(DEPTH)/config/mkdepend
 MKDEPEND 	= $(MKDEPEND_DIR)/$(OBJDIR_NAME)/mkdepend

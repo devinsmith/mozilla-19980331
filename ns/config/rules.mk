@@ -631,39 +631,6 @@ endif
 
 -include $(DEPENDENCIES)
 
-ifneq (,$(filter-out OS2 WINNT,$(OS_ARCH)))
-# Can't use sed because of its 4000-char line length limit, so resort to perl
-.DEFAULT:
-	@$(PERL) -e '                                                         \
-	    open(MD, "< $(DEPENDENCIES)");                                    \
-	    while (<MD>) {                                                    \
-		if (m@ \.*/*$< @) {                                           \
-		    $$found = 1;                                              \
-		    last;                                                     \
-		}                                                             \
-	    }                                                                 \
-	    if ($$found) {                                                    \
-		print "Removing stale dependency $< from $(DEPENDENCIES)\n";  \
-		seek(MD, 0, 0);                                               \
-		$$tmpname = "$(OBJDIR)/fix.md" . $$$$;                        \
-		open(TMD, "> " . $$tmpname);                                  \
-		while (<MD>) {                                                \
-		    s@ \.*/*$< @ @;                                           \
-		    if (!print TMD "$$_") {                                   \
-			unlink(($$tmpname));                                  \
-			exit(1);                                              \
-		    }                                                         \
-		}                                                             \
-		close(TMD);                                                   \
-		if (!rename($$tmpname, "$(DEPENDENCIES)")) {                  \
-		    unlink(($$tmpname));                                      \
-		}                                                             \
-	    } elsif ("$<" ne "$(DEPENDENCIES)") {                             \
-		print "$(MAKE): *** No rule to make target $<.  Stop.\n";     \
-		exit(1);                                                      \
-	    }'
-endif
-
 #############################################################################
 # X dependency system
 #############################################################################

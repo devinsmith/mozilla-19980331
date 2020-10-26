@@ -17,7 +17,7 @@
  */
 
 #include <stdlib.h>
-#include <iostream.h>
+#include <iostream>
 #include "plstr.h"
 #include "prlink.h"
 #include "nsRepository.h"

@@ -181,7 +181,7 @@ extern char * strnchr (const char * str, const char single, int32 len);
 
 /* find a substring within a string with a case insensitive search
  */
-extern char * strcasestr (const char * str, const char * substr);
+extern const char * XP_strcasestr (const char * str, const char * substr);
 
 /* find a substring within a specified length string with a case 
  * insensitive search

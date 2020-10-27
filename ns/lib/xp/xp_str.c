@@ -113,7 +113,7 @@ xp_toupper(int c)
 /* find a substring within a string with a case insensitive search
  */
 PUBLIC char *
-strcasestr (const char * str, const char * substr)
+XP_strcasestr (const char * str, const char * substr)
 {
     register const char *pA;
     register const char *pB;

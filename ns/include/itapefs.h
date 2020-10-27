@@ -164,7 +164,7 @@ public:
     //
     // The ITapeFileSystem will call pfComplete(success,pArg) before deleting itself.  I.e. the ITapeFileSystem is still valid 
     // when it calls pfComplete().
-    virtual void Complete( Bool bSuccess, EDT_ITapeFileSystemComplete *pfComplete, void *pArg )=0;
+    virtual void Complete( XP_Bool bSuccess, EDT_ITapeFileSystemComplete *pfComplete, void *pArg )=0;
 
     inline PRBool IsFirstBinary(void) { return m_FirstBinary; }
     inline void SetFirstBinary(void) { m_FirstBinary = PR_TRUE; }

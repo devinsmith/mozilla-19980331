@@ -408,7 +408,7 @@ XFE_HistoryView::commandToString(CommandType, void*, XFE_CommandInfo*)
     return NULL;
 }
 
-XP_Bool
+bool
 XFE_HistoryView::isCommandSelected(CommandType cmd,
                                    void *calldata, XFE_CommandInfo* info)
 {

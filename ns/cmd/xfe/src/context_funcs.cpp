@@ -121,7 +121,6 @@ static char *stderr_tail = 0;
 static time_t stderr_last_read = 0;
 static XtIntervalId stderr_dialog_timer = 0;
 
-extern FILE *real_stderr;
 FILE *real_stdout = stdout;
 
 static void
@@ -231,7 +230,6 @@ fe_initialize_stderr (void)
 
   if (done) return;
 
-  real_stderr = stderr;
   real_stdout = stdout;
 
 #ifdef DEBUG
@@ -295,8 +293,6 @@ fe_initialize_stderr (void)
 				 XP_GetString(XFE_COULD_NOT_FDOPEN_STDERR));
 	  return;
 	}
-      real_stderr = new_stderr_file;
-
       close (stderr_fd);
       if (dup2 (out, stderr_fd) < 0)
 	{
@@ -322,8 +318,6 @@ fe_initialize_stderr (void)
 				 XP_GetString(XFE_COULD_NOT_FDOPEN_THE_NEW_STDOUT));
 	  return;
 	}
-      real_stdout = new_stdout_file;
-
       close (stdout_fd);
       if (dup2 (out, stdout_fd) < 0)
 	{

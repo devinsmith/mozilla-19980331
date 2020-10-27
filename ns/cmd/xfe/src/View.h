@@ -68,7 +68,7 @@ public:
 
   /* used by toplevel to change the selection state of specified toggle menu 
      items.  This method only applies to toggle button */
-  virtual Boolean isCommandSelected(CommandType cmd, void *calldata = NULL,
+  virtual bool isCommandSelected(CommandType cmd, void *calldata = NULL,
 									XFE_CommandInfo* i = NULL);
 
   virtual XFE_Command* getCommand(CommandType) { return NULL; };

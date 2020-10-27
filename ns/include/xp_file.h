@@ -444,7 +444,7 @@ extern char ** XP_GetNewsRCFiles(void);
  * Returns TRUE if file already exists
  * Windows version implemented in winfe\fegui.cpp
  */
-extern Bool XP_ConvertUrlToLocalFile(const char * szURL, char **pszLocalName);
+extern XP_Bool XP_ConvertUrlToLocalFile(const char * szURL, char **pszLocalName);
 
 /* Construct a temporary filename in same directory as supplied "file:///" type URL
  * Used as write destination for saving edited document

@@ -80,7 +80,7 @@ XFE_NavCenterView::~XFE_NavCenterView()
 }
 
 //////////////////////////////////////////////////////////////////////////
-XP_Bool
+Boolean
 XFE_NavCenterView::isCommandEnabled(CommandType cmd,
 								   void *calldata, XFE_CommandInfo*)
 {
@@ -126,7 +126,7 @@ XFE_NavCenterView::handlesCommand(CommandType cmd, void *calldata,
     }
 }
 
-XP_Bool
+bool
 XFE_NavCenterView::isCommandSelected(CommandType cmd,
                                     void *calldata, XFE_CommandInfo* info)
 {

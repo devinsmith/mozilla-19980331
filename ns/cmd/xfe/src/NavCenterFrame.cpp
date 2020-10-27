@@ -126,7 +126,7 @@ XFE_NavCenterFrame::doCommand(CommandType cmd, void *calldata, XFE_CommandInfo*i
     }
 }
 
-Boolean
+XP_Bool
 XFE_NavCenterFrame::handlesCommand(CommandType cmd, void *calldata,
                             XFE_CommandInfo* info)
 {

@@ -533,7 +533,7 @@ fe_GetLocaleCharSets(Display *dpy)
 			continue;
 		}
 		/*
-		(void) fprintf(real_stderr, "locale font %d: \"%s\"\n", i + 1,
+		(void) fprintf(stderr, "locale font %d: \"%s\"\n", i + 1,
 			missing[i]);
 		*/
 		charset = strdup(missing[i]);
@@ -558,7 +558,7 @@ fe_GetLocaleCharSets(Display *dpy)
 		else
 		{
 #ifdef DEBUG
-			(void) fprintf(real_stderr, "fontset charset %s\n",
+			(void) fprintf(stderr, "fontset charset %s\n",
 				charset);
 #endif /* DEBUG */
 			continue;
@@ -567,7 +567,7 @@ fe_GetLocaleCharSets(Display *dpy)
 		if ((charsetID == CS_UNKNOWN) && strcmp(charset, "x-ignore"))
 		{
 #ifdef DEBUG
-			(void) fprintf(real_stderr, "fontset internal %s %s\n",
+			(void) fprintf(stderr, "fontset internal %s %s\n",
 				charset, mimeCharSet);
 #endif /* DEBUG */
 			continue;
@@ -852,7 +852,7 @@ fe_GetFontOrFontSet(MWContext *context, char *familyName, int sizeNum,
 			if (fontOrFontSet)
 			{
 				/*
-				(void) fprintf(real_stderr,
+				(void) fprintf(stderr,
 					"font set \"%s\" succeeded\n", list);
 				*/
 				f = XP_NEW_ZAP(fe_FontSetListEntry);
@@ -869,7 +869,7 @@ fe_GetFontOrFontSet(MWContext *context, char *familyName, int sizeNum,
 			else
 			{
 				/*
-				(void) fprintf(real_stderr,
+				(void) fprintf(stderr,
 					"font set \"%s\" failed\n", list);
 				*/
 				return NULL;
@@ -1160,7 +1160,7 @@ fe_LoadFont(MWContext *context, int16 *charset, char *familyName,
 
 			/* @@@ need to change this */
 			/*
-			(void) fprintf(real_stderr, "could not load\n%s\n",
+			(void) fprintf(stderr, "could not load\n%s\n",
 				face->longXLFDFontName);
 			*/
 			/* XP_GetString(XFE_COULD_NOT_LOAD_FONT) */
@@ -2001,7 +2001,7 @@ fe_AddFontSize(fe_FontFamily *family, int faceNum, int pixelSizeNum,
 	{
 		/* @@@ fix this -- erik */
 		/*
-		(void) fprintf(real_stderr, "dup %s\n", pixelSizeFontSpec);
+		(void) fprintf(stderr, "dup %s\n", pixelSizeFontSpec);
 		*/
 	}
 
@@ -2066,7 +2066,7 @@ fe_AddFontSize(fe_FontFamily *family, int faceNum, int pixelSizeNum,
 	{
 		/* @@@ fix this -- erik */
 		/*
-		(void) fprintf(real_stderr, "dup %s\n", pointSizeFontSpec);
+		(void) fprintf(stderr, "dup %s\n", pointSizeFontSpec);
 		*/
 	}
 }
@@ -2236,17 +2236,17 @@ fe_PrintFamily(fe_FontFamily *family)
 	int		j;
 	fe_FontSize	*size;
 
-        (void) fprintf(real_stderr, "    %s\n", family->name);
+        (void) fprintf(stderr, "    %s\n", family->name);
 	for (i = 0; i < family->numberOfPointSizes; i++)
 	{
 		size = &family->pointSizes[i];
-		(void) fprintf(real_stderr, "      %d\n", size->size / 10);
+		(void) fprintf(stderr, "      %d\n", size->size / 10);
 		for (j = 0; j < 4; j++)
 		{
-			(void) fprintf(real_stderr, "        %s\n",
+			(void) fprintf(stderr, "        %s\n",
 				FE_INDEX_TO_FACE(j));
 			face = size->faces[j];
-			(void) fprintf(real_stderr, "          %s\n",
+			(void) fprintf(stderr, "          %s\n",
 					face->longXLFDFontName);
 		}
 	}
@@ -2269,10 +2269,10 @@ fe_PrintFonts(void)
 		{
 			continue;
 		}
-		(void) fprintf(real_stderr, "%s\n", charset->name);
+		(void) fprintf(stderr, "%s\n", charset->name);
 		for (j = 0; j < 2; j++)
 		{
-			(void) fprintf(real_stderr, "  %s\n",
+			(void) fprintf(stderr, "  %s\n",
 				fe_PropOrFixedFont(j));
 			pitch = &charset->pitches[j];
 			for (k = 0; k < pitch->numberOfFamilies; k++)
@@ -2425,7 +2425,7 @@ fe_ReadFontCharSet(char *charsetname)
 	if (!charset)
 	{
 		/* this should never happen */
-		(void) fprintf(real_stderr, "no recognized font charsets!\n");
+		(void) fprintf(stderr, "no recognized font charsets!\n");
 		exit(1);
 	}
 }
@@ -3820,7 +3820,7 @@ fe_InitFonts(Display *dpy)
 	if (sizeof(fe_CharSetInfoArray) / sizeof(*fe_CharSetInfoArray) !=
 		INTL_CHAR_SET_MAX)
 	{
-		(void) fprintf(real_stderr,
+		(void) fprintf(stderr,
 			"fe_CharSetInfoArray broken (size)\n");
 #if 0 
 		/* to fix 93446
@@ -3832,7 +3832,7 @@ fe_InitFonts(Display *dpy)
 	{
 		if ((fe_CharSetInfoArray[i].charsetID & 0xff) != i)
 		{
-			(void) fprintf(real_stderr,
+			(void) fprintf(stderr,
 				"fe_CharSetInfoArray broken (%d)\n", i);
 #if 0 
 			/* to fix 93446
@@ -4006,7 +4006,7 @@ fe_InitFonts(Display *dpy)
 		else
 		{
 #ifdef DEBUG_xxx
-			(void) fprintf(real_stderr, "face %s\n", weight);
+			(void) fprintf(stderr, "face %s\n", weight);
 #endif /* DEBUG_xxx */
 			weight = "";
 		}
@@ -4094,7 +4094,7 @@ fe_InitFonts(Display *dpy)
 #ifdef DEBUG
 			else
 			{
-				(void) fprintf(real_stderr, "charset %s %s\n",
+				(void) fprintf(stderr, "charset %s %s\n",
 					origFamily, charsetlang);
 			}
 #endif /* DEBUG */
@@ -4122,7 +4122,7 @@ fe_InitFonts(Display *dpy)
 #ifdef DEBUG
 		if ((charsetID == CS_UNKNOWN) && strcmp(charset, "x-ignore"))
 		{
-			(void) fprintf(real_stderr, "internal %s %s %s\n",
+			(void) fprintf(stderr, "internal %s %s %s\n",
 				origFamily, charsetlang, charset);
 		}
 #endif /* DEBUG */
@@ -4150,7 +4150,7 @@ fe_InitFonts(Display *dpy)
 		else
 		{
 #if 0
-			(void) fprintf(real_stderr, "charsetlang %s\n",
+			(void) fprintf(stderr, "charsetlang %s\n",
 				charsetlang);
 #endif /* 0 */
 			charsetlang = XP_GetString(XFE_OTHER_LANGUAGE);
@@ -4218,7 +4218,7 @@ fe_InitFonts(Display *dpy)
 #if 0
 (void) fprintf
 (
-	real_stderr,
+	stderr,
 	"\"%s\" \"%s\" \"%s\" %d \"%s%s\" %d \"%s\" \"%s\"\n\"%s\"\n",
 	foundry,
 	family,

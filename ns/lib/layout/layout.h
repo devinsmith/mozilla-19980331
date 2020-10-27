@@ -1222,8 +1222,8 @@ extern Bool lo_FindWord(MWContext *, lo_DocState *,
 /* Object */
 extern void lo_FormatObject(MWContext*, lo_DocState*, PA_Tag*);
 extern void lo_ObjectParam(MWContext*, lo_DocState*, PA_Tag*, uint32*, char***, char***);
-extern void lo_ProcessObjectTag(MWContext*, lo_DocState*, PA_Tag*, Bool);
-extern void lo_ProcessParamTag(MWContext*, lo_DocState*, PA_Tag*, Bool);
+extern void lo_ProcessObjectTag(MWContext*, lo_DocState*, PA_Tag*, XP_Bool);
+extern void lo_ProcessParamTag(MWContext*, lo_DocState*, PA_Tag*, XP_Bool);
 extern void lo_FormatEmbedObject(MWContext*, lo_DocState*, PA_Tag*, LO_EmbedStruct*, Bool,
 								 uint32 count, char** names, char** values);
 extern void lo_FormatJavaObject(MWContext *context, lo_DocState *state,

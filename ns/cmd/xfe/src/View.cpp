@@ -230,7 +230,7 @@ XFE_View::commandToString(CommandType cmd,
   return NULL;
 }
 
-Boolean
+bool
 XFE_View::isCommandSelected(CommandType cmd,
 							void *calldata, XFE_CommandInfo* info)
 {

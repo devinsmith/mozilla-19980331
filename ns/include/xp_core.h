@@ -191,7 +191,7 @@
      *  Can we just #undef Bool here? <mailto:mcafee> (help from djw, converse)
      */
     typedef int Bool; /* Fix this to be bool */
-    typedef char XP_Bool;
+    typedef int XP_Bool;
 #endif
 
 #if defined(XP_WIN)

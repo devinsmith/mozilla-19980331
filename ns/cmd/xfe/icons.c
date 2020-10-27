@@ -2680,6 +2680,8 @@ FE_AboutData (const char *which,
 	  else
 	    {
 	      a = strdup (
+            "about"
+#if 0
 #ifdef JAVA
 #ifndef MOZ_COMMUNICATOR_ABOUT
 #		          include "../../l10n/us/xp/about-java-lite.h"
@@ -2691,6 +2693,7 @@ FE_AboutData (const char *which,
 #		          include "../../l10n/us/xp/about-lite.h"
 #else
 #		          include "../../l10n/us/xp/about.h"
+#endif
 #endif
 #endif
 		         );
@@ -2708,6 +2711,8 @@ FE_AboutData (const char *which,
 	  else
 	    {
 	      a = strdup (
+            "splash"
+#if 0
 #ifdef JAVA
 #ifndef MOZ_COMMUNICATOR_ABOUT
 #		          include "../../l10n/us/xp/splash-java-lite.h"
@@ -2721,6 +2726,7 @@ FE_AboutData (const char *which,
 #		          include "../../l10n/us/xp/splash.h"
 #endif
 #endif
+#endif
 		         );
 	    }
 	}
@@ -2728,7 +2734,10 @@ FE_AboutData (const char *which,
 	{
 	  ever_loaded_map = TRUE;
 	  a = strdup (
+        "authors2"
+        /*
 #		      include "../../l10n/us/xp/authors2.h"
+*/
 		     );
 	}
       else if (!strcmp (which,"license"))
@@ -2749,7 +2758,8 @@ FE_AboutData (const char *which,
       else if (!strcmp (which,"mozilla"))
 	{
 	  a = strdup (
-#		      include "../../l10n/us/xp/mozilla.h"
+        "mozilla"
+/*#		      include "../../l10n/us/xp/mozilla.h" */
 		      );
 	}
       else if (!strcmp (which,
@@ -2765,7 +2775,8 @@ FE_AboutData (const char *which,
      else
      {
 		  a = strdup (
-#		      include "../../l10n/us/xp/mail.h"
+          "mail"
+/*#		      include "../../l10n/us/xp/mail.h" */
 		      );
      }
 	}
@@ -2790,7 +2801,8 @@ FE_AboutData (const char *which,
 	  else
 	    {
 	      a = strdup (
-#		          include "../../l10n/us/xp/aboutplg.h"
+        "plugins"
+/* #		          include "../../l10n/us/xp/aboutplg.h" */
 		         );
 	    }
 	}

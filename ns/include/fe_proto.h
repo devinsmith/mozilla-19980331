@@ -927,7 +927,7 @@ PUBLIC void FE_DisplayGenericCaret(MWContext * context, LO_Any * pLoAny,
 PUBLIC void FE_DisplayDropTableFeedback(MWContext * context, EDT_DragTableData *pDragData);
 #endif
 
-PUBLIC Bool FE_GetCaretPosition(MWContext *context, LO_Position* where,
+PUBLIC XP_Bool FE_GetCaretPosition(MWContext *context, LO_Position* where,
     int32* caretX, int32* caretYLow, int32* caretYHigh);
 
 PUBLIC void FE_DestroyCaret(MWContext *pContext);
@@ -979,7 +979,7 @@ PUBLIC void FE_SaveDialogDestroy( MWContext *pContext, int status, char *pFilena
 PUBLIC ED_SaveOption FE_SaveFileExistsDialog( MWContext *pContext, char* pFilename );
 
 /* Sent after file is opened (or failed) -- same time saving is initiated */
-PUBLIC Bool FE_SaveErrorContinueDialog( MWContext *pContext, char* pFileName, ED_FileError error );
+PUBLIC XP_Bool FE_SaveErrorContinueDialog( MWContext *pContext, char* pFileName, ED_FileError error );
 
 PUBLIC void FE_ClearBackgroundImage( MWContext *pContext );
 
@@ -991,7 +991,7 @@ PUBLIC void FE_EditorDocumentLoaded( MWContext *pContext );
 */
 PUBLIC char* FE_URLToLocalName( char* );
 
-PUBLIC Bool FE_EditorPrefConvertFileCaseOnWrite(void);
+PUBLIC XP_Bool FE_EditorPrefConvertFileCaseOnWrite(void);
 
 /* Defines to use for second parameter to FE_LoadUrl 
  * for better readability
@@ -1032,20 +1032,20 @@ void FE_EditorGetUrlExitRoutine(URL_Struct *pUrl, int iStatus, MWContext *pMWCon
  * Returns TRUE for all cases except CANCEL by the user in any dialog
  * Call this before any URL load into the current frame window
 */
-Bool FE_CheckAndSaveDocument(MWContext *pMWContext);
+XP_Bool FE_CheckAndSaveDocument(MWContext *pMWContext);
 
 /* Similar to above, but dialog to ask user if they want to save changes
  *    should have "AutoSave" caption and extra line to
  *    tell them "Cancel" will turn off Autosave until they 
  *    save the file later.
 */
-Bool FE_CheckAndAutoSaveDocument(MWContext *pMWContext);
+XP_Bool FE_CheckAndAutoSaveDocument(MWContext *pMWContext);
 
 /* Checks for new doc or remote editing and prompts
  *  to save. Return FALSE only if user cancels out of dialog
  * Use bSaveNewDocument = FALSE to not force saving of a new document
 */
-Bool FE_SaveNonLocalDocument(MWContext *pMWContext, Bool  bSaveNewDocument);
+XP_Bool FE_SaveNonLocalDocument(MWContext *pMWContext, XP_Bool  bSaveNewDocument);
 
 #if defined(XP_WIN) || defined(XP_OS2)
 /* Tell the front end every time we finish relaying out so

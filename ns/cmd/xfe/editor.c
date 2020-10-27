@@ -1014,7 +1014,7 @@ FE_CheckAndSaveDocument(MWContext* context)
     return fe_save_file_check(context, TRUE, FALSE);
 }
 
-XP_Bool 
+XP_Bool
 FE_CheckAndAutoSaveDocument(MWContext *context)
 {
     return fe_save_file_check(context, FALSE, TRUE);
@@ -2053,7 +2053,7 @@ fe_caret_set(MWContext* context, int x, int y, unsigned w, unsigned h)
     fe_editor_keep_cursor_visible(context);
 }
 
-Boolean 
+XP_Bool
 FE_GetCaretPosition(
 		    MWContext *context,
 		    LO_Position* where,
@@ -2064,7 +2064,7 @@ FE_GetCaretPosition(
   int32 yValHigh;
 
 #if DEBUG_rhess2
-  fprintf(real_stderr, "FE_GetCaretPosition::[ ]\n");
+  fprintf(stderr, "FE_GetCaretPosition::[ ]\n");
 #endif
 
   if (!context || !where->element)
@@ -2510,9 +2510,9 @@ FE_URLToLocalName(char *name)
   return rv;
 }
 
-Boolean FE_EditorPrefConvertFileCaseOnWrite(void)
+XP_Bool FE_EditorPrefConvertFileCaseOnWrite(void)
 {
-  fprintf (real_stderr,"FE_EditorPrefConvertFileCaseOnWrite\n");
+  fprintf (stderr,"FE_EditorPrefConvertFileCaseOnWrite\n");
   return TRUE;
 }
 
@@ -3104,7 +3104,7 @@ FE_SaveFileExistsDialog(MWContext* context, char* filename)
   }
 }
 
-Boolean
+XP_Bool
 FE_SaveErrorContinueDialog(MWContext*   context,
 			   char*        filename, 
 			   ED_FileError error)
@@ -3118,7 +3118,7 @@ FE_SaveErrorContinueDialog(MWContext*   context,
   }
 }
 
-Boolean XP_ConvertUrlToLocalFile (const char *url, char **localName)
+XP_Bool XP_ConvertUrlToLocalFile (const char *url, char **localName)
 {
   Boolean filefound = FALSE;
   char *path = NULL;
@@ -6373,7 +6373,7 @@ fe_EditorKeyInsert(MWContext* context, Widget widget, XEvent* event)
 
     if (widget != CONTEXT_DATA(context)->drawing_area) {
 #ifdef DEBUG
-		(void) fprintf(real_stderr,
+		(void) fprintf(stderr,
 					   "fe_editor_key_input_action got wrong widget (%s)\n",
 					   XtName(widget));
 #endif /* DEBUG */
@@ -6775,7 +6775,7 @@ fe_editor_motion_action(Widget widget, XEvent *event,
 					
                         if (progress_string != NULL) {
                             sprintf(num, ",%d,%d",
-                                    x - le->lo_image.x, y - le->lo_image.y);
+                                    (int)x - le->lo_image.x, (int)y - le->lo_image.y);
                             FE_CondenseURL(buf, progress_string,
                                            sizeof(buf) - 1 - strlen(num));
                             strcat(buf, num);
@@ -6833,7 +6833,7 @@ fe_ActionWrongContextAlert(MWContext*    context,
     if (context)
 	FE_Alert(context, buf);
     else
-	fprintf(real_stderr, buf);
+	fprintf(stderr, buf);
 }
 
 void

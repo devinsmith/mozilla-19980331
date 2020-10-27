@@ -1102,7 +1102,7 @@ XFE_HTMLView::doCommand(CommandType cmd, void *callData, XFE_CommandInfo* info)
 #undef IS_CMD
 }
 
-XP_Bool
+bool
 XFE_HTMLView::isCommandSelected(CommandType cmd,
 							 void *calldata, XFE_CommandInfo* info)
 {

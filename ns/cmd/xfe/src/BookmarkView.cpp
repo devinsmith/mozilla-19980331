@@ -773,7 +773,7 @@ XFE_BookmarkView::handlesCommand(CommandType cmd, void *calldata,
 #undef IS_CMD
 }
 
-XP_Bool
+bool
 XFE_BookmarkView::isCommandSelected(CommandType cmd,
                                     void *calldata, XFE_CommandInfo* info)
 {

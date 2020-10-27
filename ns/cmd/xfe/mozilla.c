@@ -1913,7 +1913,7 @@ build_user_agent_string(char *versionLocale)
 #endif
         strcat (buf,XP_GetString(XFE_MOZILLA_UNAME_FAILED));
 
-	fprintf (real_stderr,
+	fprintf (stderr,
 			 XP_GetString(XFE_MOZILLA_UNAME_FAILED_CANT_DETERMINE_SYSTEM),
 			 fe_progname);
       }
@@ -2033,7 +2033,6 @@ main
   s = XP_STRRCHR (fe_progname, '/');
   if (s) fe_progname = s + 1;
 
-  real_stderr = stderr;
   real_stdout = stdout;
 
   fe_hack_uid();	/* Do this real early */
@@ -2454,11 +2453,13 @@ main
  	 * are adding here, then we know that Xt is calling us, so it is
  	 * safe to release the X lock. -- erik
  	 */
+#if 0
  	fd = PR_XGetXtHackFD();
  	if (fd >= 0) {
  		(void) XtAppAddInput(fe_XtAppContext, fd,
  			(XtPointer) XtInputReadMask, dummyInputProc, NULL);
  	}
+#endif
  
 #ifdef XFE_XLOCK_FD_TIMER_HACK
 	/*
@@ -3314,10 +3315,12 @@ main
 
   fe_command_line_done = True;
 
+#if 0
   {
     extern void PR_SetXtHackOkayToReleaseXLockFn(int (*fn)(void));
     PR_SetXtHackOkayToReleaseXLockFn(fe_xt_hack_okayToReleaseXLock);
   }
+#endif
 
   while (1)
     fe_EventLoop ();
@@ -4615,8 +4618,8 @@ x_error_handler (Display *dpy, XErrorEvent *event)
       event->request_code == X_GrabButton)
     return 0;
 
-  fprintf (real_stderr, "\n%s:\n", fe_progname);
-  XmuPrintDefaultErrorMessage (dpy, event, real_stderr);
+  fprintf (stderr, "\n%s:\n", fe_progname);
+  XmuPrintDefaultErrorMessage (dpy, event, stderr);
 
 #ifndef DONT_PRINT_WIDGETS_IN_ERROR_HANDLER
   {
@@ -4626,28 +4629,28 @@ x_error_handler (Display *dpy, XErrorEvent *event)
 	  {
 		  Widget guilty = XtWindowToWidget(dpy,window);
 
-		  fprintf(real_stderr,"  Widget hierarchy of resource: ");
+		  fprintf(stderr,"  Widget hierarchy of resource: ");
 
 		  if (guilty)
 		  {
 			  while(guilty)
 			  {
-				  fprintf(real_stderr,"%s",XtName(guilty));
+				  fprintf(stderr,"%s",XtName(guilty));
 
 				  guilty = XtParent(guilty);
 
 				  if (guilty)
 				  {
-					  fprintf(real_stderr,".");
+					  fprintf(stderr,".");
 				  }
 			  }
 		  }
 		  else
 		  {
-			  fprintf(real_stderr,"unknown\n");
+			  fprintf(stderr,"unknown\n");
 		  }
 
-		  fprintf(real_stderr,"\n");
+		  fprintf(stderr,"\n");
 	  }
   }
 #endif

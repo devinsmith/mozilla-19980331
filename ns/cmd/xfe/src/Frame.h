@@ -161,7 +161,7 @@ public:
 						 XFE_CommandInfo* = NULL);
   virtual char *commandToString(CommandType cmd, void *calldata = NULL,
 						 XFE_CommandInfo* = NULL);
-  virtual XP_Bool isCommandSelected(CommandType cmd, void *calldata = NULL,
+  virtual bool isCommandSelected(CommandType cmd, void *calldata = NULL,
 						 XFE_CommandInfo* = NULL);
   virtual XFE_Command* getCommand(CommandType);
   XFE_View*	widgetToView(Widget w);

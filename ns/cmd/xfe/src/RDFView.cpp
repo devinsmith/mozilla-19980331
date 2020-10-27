@@ -140,7 +140,7 @@ XFE_RDFView::handlesCommand(CommandType cmd, void *calldata,
     }
 }
 
-XP_Bool
+bool
 XFE_RDFView::isCommandSelected(CommandType cmd,
                                     void *calldata, XFE_CommandInfo* info)
 {

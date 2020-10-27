@@ -166,7 +166,7 @@ ekit_AnimationFile(void)
 /*
  * ekit_Enabled
  */
-XP_Bool
+Boolean
 ekit_Enabled(void)
 {
     return TRUE;

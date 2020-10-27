@@ -1343,8 +1343,8 @@ void *XFE_PrefsPageBrowserLang::acquireLineData(int line)
 	return (void *)1;
 }
 
-void XFE_PrefsPageBrowserLang::getTreeInfo(Boolean * /* expandable */,
-										   Boolean * /* is_expanded */,
+void XFE_PrefsPageBrowserLang::getTreeInfo(XP_Bool * /* expandable */,
+										   XP_Bool * /* is_expanded */,
 										   int     * /* depth */,
 										   OutlinerAncestorInfo ** /* ancestor */)
 {

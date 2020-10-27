@@ -809,7 +809,7 @@ XFE_EditorFrame::getContext()
 #define TRACE(x)
 #endif
 
-Boolean
+XP_Bool
 XFE_EditorFrame::isCommandEnabled(CommandType cmd,
 								  void* calldata, XFE_CommandInfo* info)
 {
@@ -823,7 +823,7 @@ XFE_EditorFrame::isCommandEnabled(CommandType cmd,
 }
 
 
-Boolean
+bool
 XFE_EditorFrame::isCommandSelected(CommandType cmd, 
 								  void* calldata, XFE_CommandInfo* info)
 {
@@ -874,7 +874,7 @@ XFE_EditorFrame::doCommand(CommandType cmd,
 	}
 }
 
-Boolean
+XP_Bool
 XFE_EditorFrame::handlesCommand(CommandType cmd,
 								void* calldata, XFE_CommandInfo* info)
 {

@@ -589,15 +589,15 @@ else
 
 MOTIFLIB	=\
 			$(MOTIFPATCH_LIB) \
-			/usr/X11R6/lib/libXm.a \
+			-lXm \
 			$(NS_MOTIF2_XP_LD_FLAGS)
 
 endif
 else
-MOTIFLIB	= /usr/X11R6/lib/libXm.a
+MOTIFLIB	= -lXm
 endif
 
-OTHER_LIBS	= $(MOTIFLIB) $(XTOOLLIB) $(XMULIB) $(EXTENSIONLIB) $(XLIB) -lm  -ldl
+OTHER_LIBS	= $(MOTIFLIB) $(XTOOLLIB) $(XMULIB) $(EXTENSIONLIB) $(XLIB) -lm -lpthread  -ldl
 
 #
 # This assumes there is a libXm.so on the system.  If there isn't, you'll
@@ -827,7 +827,7 @@ RESOURCES-%.c: Netscape-%.ad ad2c Makefile
 	echo '0};' >> $@
 
 # Explicit dependency list to ensure that e_kit_resources.h gets built.
-$(OBJDIR)/e_kit.o:	e_kit.c e_kit_resources.h
+$(OBJDIR)/e_kit.o:	e_kit.c
 
 # Turn ekit app-defaults into a C file
 #e_kit_resources.h: e_kit.ad

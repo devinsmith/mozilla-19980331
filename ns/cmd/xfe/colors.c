@@ -909,18 +909,6 @@ RETRY:
         colormap->allocation[i] = CELL_AVAIL;
     }
 
-#if 0
-  fprintf (real_stderr,
- #ifdef OSF1
-          "substituted %04X %04X %04X for %04X %04X %04X (%ld)\n",
-#else
-          "substituted %04X %04X %04X for %04X %04X %04X (%ld)\n",
-#endif
-	   color.red, color.green, color.blue,
-	   color_in_out->red, color_in_out->green, color_in_out->blue,
-	   distance);
-#endif
-
   *color_in_out = color;
 }
 

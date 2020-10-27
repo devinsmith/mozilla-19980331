@@ -108,7 +108,7 @@ extern "C" {
 	MWContext* fe_WidgetToMWContext(Widget);
 	void fe_ProtectContext(MWContext *context);
 	void fe_UnProtectContext(MWContext *context);
-	XP_Bool fe_IsContextDestroyed(MWContext *context);
+	Boolean fe_IsContextDestroyed(MWContext *context);
 	void fe_fixFocusAndGrab(MWContext *context);
 	void fe_load_default_font (MWContext *context);
 	void fe_find_scrollbar_sizes (MWContext *context);

@@ -1396,7 +1396,7 @@ public:
 //  Here's another problem inline function for the HP-UX
 //  and SCO C++ compilers.    -slamm 2-3-97
 //
-Boolean
+XP_Bool
 ToggleCharacterStyleCommand::isSelected(XFE_View* view, XFE_CommandInfo* calldata) {
   XFE_CommandInfo* info = (XFE_CommandInfo*)calldata;
   unsigned style;

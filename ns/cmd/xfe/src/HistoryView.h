@@ -64,7 +64,7 @@ public:
 								   XFE_CommandInfo* i = NULL);
   virtual char *commandToString(CommandType cmd, void *calldata = NULL,
 								   XFE_CommandInfo* i = NULL);
-  virtual XP_Bool isCommandSelected(CommandType cmd,
+  virtual bool isCommandSelected(CommandType cmd,
                                     void *calldata = NULL,
                                     XFE_CommandInfo* info = NULL);
   

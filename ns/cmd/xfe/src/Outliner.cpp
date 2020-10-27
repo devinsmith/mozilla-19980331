@@ -264,7 +264,7 @@ XFE_Outliner::XFE_Outliner(const char *name,
 						   XFE_Outlinable *o,
 						   XFE_Component *toplevel_component,
 						   Widget widget_parent, 
-						   Boolean constantSize, 
+						   XP_Bool constantSize, 
 						   XP_Bool hasHeadings,
 						   int num_columns, 
 						   int num_visible,
@@ -714,7 +714,7 @@ XFE_Outliner::scroll2Item(int index)
 }
 
 void
-XFE_Outliner::setMultiSelectAllowed(Boolean flag)
+XFE_Outliner::setMultiSelectAllowed(XP_Bool flag)
 {
 	XP_ASSERT(m_widget != 0);
 
@@ -732,7 +732,7 @@ XFE_Outliner::setMultiSelectAllowed(Boolean flag)
 		}
 }
 
-Boolean
+XP_Bool
 XFE_Outliner::getMultiSelectAllowed()
 {
 	unsigned char selectionPolicy;
@@ -1751,7 +1751,7 @@ XFE_Outliner::deselectRangeByIndices(int selection_begin,
 		}
 }
 
-Boolean
+XP_Bool
 XFE_Outliner::isSelected (int line)
 {
 	int i;
@@ -1794,7 +1794,7 @@ XFE_Outliner::selectRangeByIndices(int selection_begin, int selection_end)
 		}
 }
 
-Boolean
+XP_Bool
 XFE_Outliner::insertLines(int start, int count)
 {
 	int i;
@@ -1830,7 +1830,7 @@ XFE_Outliner::insertLines(int start, int count)
 	return FALSE;
 }
 
-Boolean
+XP_Bool
 XFE_Outliner::deleteLines(int start, int count)
 {
 	Boolean res = FALSE;

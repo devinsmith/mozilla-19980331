@@ -23,3 +23,5 @@ LIBRARY_NAME	= DtWidgets
 CSRCS		= ComboBox.c
 
 include $(DEPTH)/config/rules.mk
+
+OS_INCLUDES += -I/usr/include/freetype2

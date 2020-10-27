@@ -47,6 +47,9 @@ struct PrefsDataProxiesView
 	Widget     socks_port_text;
 };
 
+void prefsProxiesViewCb_ok(Widget, XtPointer, XtPointer);
+void prefsProxiesViewCb_cancel(Widget, XtPointer, XtPointer);
+
 class XFE_PrefsProxiesViewDialog : public XFE_Dialog
 
 {

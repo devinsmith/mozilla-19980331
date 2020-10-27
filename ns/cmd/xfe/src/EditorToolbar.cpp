@@ -34,6 +34,7 @@
 #include "Logo.h"
 #include "Button.h" // for fe_buttonSetPixmaps()
 
+#undef Bool
 #include <DtWidgets/ComboBoxP.h>
 #include <Xm/MenuUtilP.h>   /* for _XmGrabPointer(), etc */
 #include <Xm/VendorSP.h>    /* for _XmAddGrab(), _XmRemoveGrab(), etc */

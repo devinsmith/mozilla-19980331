@@ -30,6 +30,13 @@
 class XFE_PrefsDialog;
 class XFE_PrefsPageGeneralAppl;
 
+void prefsApplEditCb_ok(Widget, XtPointer, XtPointer);
+void prefsApplEditCb_cancel(Widget, XtPointer, XtPointer);
+void prefsApplEditCb_toggleHandledBy(Widget, XtPointer, XtPointer);
+void prefsApplEditCb_browseAppl(Widget, XtPointer, XtPointer);
+void prefsApplEditCb_setHandledBy(Widget, XtPointer, XtPointer);
+void prefsApplEditCb_selectPlugin(Widget, XtPointer, XtPointer);
+
 class XFE_PrefsApplEditDialog : public XFE_Dialog
 
 {

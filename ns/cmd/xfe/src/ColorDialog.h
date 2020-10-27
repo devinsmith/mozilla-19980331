@@ -30,6 +30,11 @@
 extern "C" Boolean fe_colorDialog(Widget parent, MWContext *context, char *colorName,
 								  Pixel *pixel);
 
+extern "C" void colorDialogCb_ok(Widget, XtPointer, XtPointer);
+extern "C" void colorDialogCb_cancel(Widget, XtPointer, XtPointer);
+extern "C" void colorDialogCb_destroy(Widget, XtPointer, XtPointer);
+extern "C" void colorDialogCb_selectColor(Widget, XtPointer, XtPointer);
+
 class XFE_ColorDialog : public XFE_Dialog
 
 {

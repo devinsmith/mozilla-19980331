@@ -535,7 +535,7 @@ XFE_CALLBACK_DEFN(XFE_MozillaApp, updateBusyState)(XFE_NotificationCenter */*obj
 												   void *clientData,
 												   void */*callData*/)
 {
-	m_isbusy = (XP_Bool)(int)clientData;
+	m_isbusy = (XP_Bool)(int)(long)clientData;
 }
 
 XFE_CALLBACK_DEFN(XFE_MozillaApp, frameUnregistering)(XFE_NotificationCenter *obj,

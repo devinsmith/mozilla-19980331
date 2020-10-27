@@ -271,12 +271,14 @@ XFE_HistoryView::doCommand(CommandType cmd, void *calldata, XFE_CommandInfo*info
            || IS_CMD(xfeCmdSortByExpirationDate)
            )
     {
-      resort((enHistSortCol)calldata, False);
+      fprintf(stderr, "Not implemented!\n");
+//      resort((enHistSortCol)calldata, False);
       return;
     }
   else if (IS_CMD(xfeCmdSortByVisitCount))
     {
-      resort((enHistSortCol)calldata, True);
+      fprintf(stderr, "Not implemented!\n");
+      //resort((enHistSortCol)calldata, True);
       return;
     }
   else if (IS_CMD(xfeCmdSortAscending))
@@ -424,7 +426,8 @@ XFE_HistoryView::isCommandSelected(CommandType cmd,
       || IS_CMD(xfeCmdSortByVisitCount)
       )
     {
-      return m_sortBy == (enHistSortCol)calldata;
+      return false;
+//      return m_sortBy == (enHistSortCol)calldata;
     }
   else if (IS_CMD(xfeCmdSortAscending))
     {

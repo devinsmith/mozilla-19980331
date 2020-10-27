@@ -997,7 +997,7 @@ FE_PromptForFileName (MWContext *context,
 
 	  String dir_part = NULL;
 	  if (xm_directory != NULL)
-		  dir_part = _XmStringGetTextConcat(xm_directory);
+		  dir_part = "/"; //_XmStringGetTextConcat(xm_directory);
 
 	  if (dir_part) {
 		  int dir_len = XP_STRLEN(dir_part);

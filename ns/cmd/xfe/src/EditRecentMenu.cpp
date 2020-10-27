@@ -89,7 +89,7 @@ XFE_EditRecentMenu::generate(Widget		cascade,
 {
 	XFE_EditRecentMenu * obj;
 
-	obj = new XFE_EditRecentMenu(frame,cascade, (int) data);
+	obj = new XFE_EditRecentMenu(frame,cascade, (int)(long) data);
 
 #ifdef DEBUG_rhess2
 	fprintf(stderr, "generate::[ %p ] - [ %p ][ %p ][ %p ]\n", 

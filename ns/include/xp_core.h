@@ -190,7 +190,7 @@
      *  been #undef-ing Bool before including this file.
      *  Can we just #undef Bool here? <mailto:mcafee> (help from djw, converse)
      */
-    typedef char Bool;
+    typedef int Bool; /* Fix this to be bool */
     typedef char XP_Bool;
 #endif
 

@@ -783,7 +783,7 @@ public:
 
 		for (i = 0; set_font_size_params[i].name != NULL; i++) {
 			char*       name = set_font_size_params[i].name;
-			ED_FontSize size = (ED_FontSize)set_font_size_params[i].data;
+			ED_FontSize size = (ED_FontSize)(long)set_font_size_params[i].data;
 			if (XP_STRCMP(name, info->params[0]) == 0) {
 				return isSelected(view, size);
 			}
@@ -808,7 +808,7 @@ public:
 			return 2;
 
 		for (i = 0; set_font_size_params[i].name != NULL; i++) {
-			ED_FontSize match = (ED_FontSize)set_font_size_params[i].data;
+			ED_FontSize match = (ED_FontSize)(long)set_font_size_params[i].data;
 			if (match == size)
 				return i;
 		}
@@ -2963,7 +2963,7 @@ XFE_EditorView::insertMessageCompositionText(const char* text,
 			// NOTE:  let's try to see if they really have any HTML tags 
 			//        in the text they've given us... [ poor man's parser ]
 			//
-			char *xtop = XP_STRSTR( text, "<HTML>" );
+			const char *xtop = XP_STRSTR( text, (char *)"<HTML>" );
 			
 			int   s1 = XP_STRLEN( text );
 			int   s2 = 0;
@@ -3004,7 +3004,7 @@ XFE_EditorView::insertMessageCompositionText(const char* text,
 
 			EDT_PasteQuoteBegin( m_contextData, isHTML );
 
-			char *xsig = 0;
+			const char *xsig = 0;
 			char *xtra = 0;
 
 			if (inDraft) {
@@ -3019,7 +3019,7 @@ XFE_EditorView::insertMessageCompositionText(const char* text,
 				// NOTE:  try to figure out if we've got a signature...
 				//
 				if (s1 > 2) {
-					xsig = XP_STRSTR( text, "-- " );
+					xsig = XP_STRSTR( text, (char *)"-- " );
 					
 					if (xsig) {
 						s2 = XP_STRLEN( xsig );
@@ -3119,7 +3119,7 @@ XFE_EditorView::doneWithMessageBody(char* /*pBody*/)
 void
 XFE_EditorView::DocEncoding (XFE_NotificationCenter *, void *, void *callData)
 {
-	int new_doc_csid = (int)callData;
+	int new_doc_csid = (int)(long)callData;
 
 #ifdef DEBUG_editor
 	fprintf(stderr, "DocEncoding::[ %d ]\n", new_doc_csid);

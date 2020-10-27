@@ -391,7 +391,7 @@ MenuSpec XFE_Frame::encoding_menu_spec[] = {
 	{ NULL }
 };
 
-#define STR_GEN(n) "menu.help.item_" # n
+#define STR_GEN(n) (char *)"menu.help.item_" # n
 
 MenuSpec XFE_Frame::help_menu_spec[] = {
 	{xfeCmdOpenCustomUrl, CUSTOMBUTTON, NULL, NULL, False, STR_GEN(0)},
@@ -450,7 +450,7 @@ MenuSpec XFE_Frame::help_menu_spec[] = {
 };
 
 #undef STR_GEN
-#define STR_GEN(n) "menu.places.item_" # n
+#define STR_GEN(n) (char *)"menu.places.item_" # n
 
 MenuSpec XFE_Frame::places_menu_spec[] = {
 	{xfeCmdOpenCustomUrl, CUSTOMBUTTON, NULL, NULL, False, STR_GEN(0)},
@@ -482,7 +482,7 @@ MenuSpec XFE_Frame::places_menu_spec[] = {
 };
 
 #undef STR_GEN
-#define STR_GEN(n) "toolbar.places.item_" # n
+#define STR_GEN(n) (char *)"toolbar.places.item_" # n
 
 MenuSpec XFE_Frame::tb_places_menu_spec[] = {
 	{xfeCmdOpenCustomUrl, CUSTOMBUTTON, NULL, NULL, False, STR_GEN(0)},
@@ -3828,7 +3828,7 @@ XFE_CALLBACK_DEFN(XFE_Frame, updateBusyState)(XFE_NotificationCenter */*obj*/,
 											  void *clientData,
 											  void */*callData*/)
 {
-	XP_Bool busy = (XP_Bool)(int)clientData;
+	XP_Bool busy = (XP_Bool)(int)(long)clientData;
 
 	setCursor(busy);
 }

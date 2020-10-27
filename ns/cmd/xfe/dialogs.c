@@ -6432,7 +6432,7 @@ fe_MovemailWarning(MWContext *context)
 #endif  /* MOZ_MAIL_NEWS */
 
 
-extern Bool
+extern int
 FE_SecurityDialog (MWContext *context, int state, XP_Bool *prefs_toggle)
 {
   char *name;

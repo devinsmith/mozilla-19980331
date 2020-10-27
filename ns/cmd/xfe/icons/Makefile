@@ -138,22 +138,22 @@ MKICONS_LIB	=  \
 		  $(JAVA_JMC) \
 		  $(DIST)/lib/libpng.a \
 		  $(DIST)/lib/libzlib.a \
-		  /usr/lib/libm.a  \
 		  $(DIST)/lib/libnspr.a \
 		  $(DIST)/lib/libjpeg.a \
 		  $(DIST)/lib/libutil.a \
-		  $(DIST)/lib/libxp.a
+		  $(DIST)/lib/libxp.a \
+			-lm -lpthread
 else
 MKICONS_LIB	=  \
 		  $(DIST)/lib/libimg.a \
 		  $(JAVA_JMC) \
 		  $(DIST)/lib/libpng.a \
 		  $(DIST)/lib/libzlib.a \
-		  /usr/lib/libm.a  \
 		  $(DIST)/lib/libnspr21.a \
 		  $(DIST)/lib/libjpeg.a \
 		  $(DIST)/lib/libutil.a \
-		  $(DIST)/lib/libxp.a
+		  $(DIST)/lib/libxp.a \
+			-lm -lpthread
 endif
 
 GARBAGE		+= $(MKICONS_EXE) \

@@ -266,7 +266,7 @@ CSRCS		= commands.c
 
 include $(DEPTH)/config/rules.mk
 
-INCLUDES	+= -I$(OBJDIR) -I.. -I../Microline3.0 -I../XfeWidgets -I../DtWidgets -I$(DEPTH)/modules/libreg/include
+INCLUDES	+= -I$(OBJDIR) -I.. -I../Microline3.0 -I../XfeWidgets -I../DtWidgets -I$(DEPTH)/modules/libreg/include -I/usr/include/freetype2
 
 #ifndef MOZ_LITE
 #CFLAGS		+= -DEDITOR

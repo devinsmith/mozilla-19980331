@@ -191,7 +191,7 @@ extern const char *FE_UsersSignature(void);
  * be loaded
  * Should return FALSE if the url should be aborted
  */
-extern Bool FE_SecurityDialog(MWContext * context, int message, XP_Bool *prefs_toggle);
+extern int FE_SecurityDialog(MWContext * context, int message, XP_Bool *prefs_toggle);
 #ifdef _USRDLL
 extern Bool NDLLFE_SecurityDialog(MWContext * context, int message);
 #endif

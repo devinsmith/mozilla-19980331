@@ -88,10 +88,10 @@ extern "C" {
   int fe_GetURL(MWContext *context, URL_Struct *url, Boolean skip_get_url);
   CL_Compositor *fe_create_compositor(MWContext *context);
   MWContext *fe_GetFocusGridOfContext (MWContext *context);
-  fe_back_cb (Widget widget, XtPointer closure, XtPointer call_data);
-  fe_forward_cb (Widget widget, XtPointer closure, XtPointer call_data);
-  fe_home_cb (Widget widget, XtPointer closure, XtPointer call_data);
-  fe_abort_cb (Widget widget, XtPointer closure, XtPointer call_data);
+  void fe_back_cb (Widget widget, XtPointer closure, XtPointer call_data);
+  void fe_forward_cb (Widget widget, XtPointer closure, XtPointer call_data);
+  void fe_home_cb (Widget widget, XtPointer closure, XtPointer call_data);
+  void fe_abort_cb (Widget widget, XtPointer closure, XtPointer call_data);
   void fe_save_as_cb (Widget widget, XtPointer closure, XtPointer call_data);
   void fe_save_top_frame_as_cb (Widget widget, XtPointer closure,
                                 XtPointer call_data);
@@ -115,7 +115,7 @@ extern "C" {
   void fe_map_notify_eh (Widget w, XtPointer closure, XEvent *ev, Boolean *cont);
   void fe_sec_logo_cb (Widget widget, XtPointer closure, XtPointer call_data);
 #ifdef EDITOR
-  fe_editor_edit_cb(Widget widget, XtPointer closure, XtPointer call_data);
+  void fe_editor_edit_cb(Widget widget, XtPointer closure, XtPointer call_data);
 #endif
   void fe_doc_enc_cb(Widget widget, XtPointer closure, XtPointer call_data);
 
@@ -1074,7 +1074,7 @@ XFE_HTMLView::doCommand(CommandType cmd, void *callData, XFE_CommandInfo* info)
     }
   else if (IS_CMD(xfeCmdChangeDocumentEncoding))
     {
-      int/*16*/ new_doc_csid = (int/*16*/)callData;
+      int new_doc_csid = (int)(long)callData;
       INTL_CharSetInfo c = LO_GetDocumentCharacterSetInfo(m_contextData);
       
       if (new_doc_csid != m_contextData->fe.data->xfe_doc_csid) 
@@ -1117,7 +1117,7 @@ XFE_HTMLView::isCommandSelected(CommandType cmd,
      as its matched view */
   if (IS_CMD(xfeCmdChangeDocumentEncoding))
     {
-      int/*16*/ test_doc_csid = (int/*16*/)calldata;
+      int test_doc_csid = (int)(long)calldata;
       if (test_doc_csid == m_contextData->fe.data->xfe_doc_csid) 
         return True;
       else
@@ -1311,7 +1311,7 @@ XFE_HTMLView::isCommandEnabled(CommandType cmd, void *calldata, XFE_CommandInfo*
   else if (cmd == xfeCmdChangeDocumentEncoding)
     {
       /* bstell: need to check if there are fonts */
-      int/*16*/ doc_csid = (int/*16*/)calldata;
+      int doc_csid = (int)(long)calldata;
       return fe_IsCharSetSupported((int16)doc_csid);
     }
   else if (IS_CMD(xfeCmdSetDefaultDocumentEncoding))
@@ -1505,7 +1505,7 @@ XFE_HTMLView::commandToString(CommandType cmd, void *calldata, XFE_CommandInfo*)
   else if (IS_CMD(xfeCmdChangeDocumentEncoding))
     {
       char *res = NULL;
-      int doc_csid = (int)calldata;
+      int doc_csid = (int)(long)calldata;
 
       switch (doc_csid)
         {

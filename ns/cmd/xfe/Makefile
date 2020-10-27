@@ -415,7 +415,7 @@ ifdef USE_ABCOM
 DEFINES		+= -DUSE_ABCOM
 endif
 
-INCLUDES	+= -IMicroline3.0 -IXfeWidgets -Isrc -I.
+INCLUDES	+= -IMicroline3.0 -IXfeWidgets -Isrc -I. -I/usr/include/freetype2
 
 
 #######################################################################
@@ -597,7 +597,7 @@ else
 MOTIFLIB	= /usr/X11R6/lib/libXm.a
 endif
 
-OTHER_LIBS	= $(MOTIFLIB) $(XTOOLLIB) $(XMULIB) $(EXTENSIONLIB) $(XLIB) /usr/lib/libm.a -ldl
+OTHER_LIBS	= $(MOTIFLIB) $(XTOOLLIB) $(XMULIB) $(EXTENSIONLIB) $(XLIB) -lm  -ldl
 
 #
 # This assumes there is a libXm.so on the system.  If there isn't, you'll
@@ -830,12 +830,12 @@ RESOURCES-%.c: Netscape-%.ad ad2c Makefile
 $(OBJDIR)/e_kit.o:	e_kit.c e_kit_resources.h
 
 # Turn ekit app-defaults into a C file
-e_kit_resources.h: e_kit.ad
-	@echo 'char* fe_ekitDefaultDatabase = ' > $@
-	cat $< | tr '[\001-\272]' '[\106-\377]' | \
+#e_kit_resources.h: e_kit.ad
+#	@echo 'char* fe_ekitDefaultDatabase = ' > $@
+#	cat $< | tr '[\001-\272]' '[\106-\377]' | \
         od -b | sed 's/^[0-7][0-7]* *\(.*\)/\\\1/; \
 		s/ /\\/g;s/\(.*\)/ "\1"/;s/^ *"\\"$$//' >> $@
-	@echo ';' >> $@
+#	@echo ';' >> $@
 
 $(OBJDIR)/Netscape-nis-export.ad $(OBJDIR)/Netscape-export.ad: Makefile resources versionn.h strs make-resources $(LOCALE_MAP)
 	@./make-resources $@ Netscape Netscape "" export $(LOCALES)
@@ -905,7 +905,7 @@ ifeq ($(OS_ARCH)$(OS_RELEASE)$(CPU_ARCH),Linux2.0x86)
 $(OBJDIR)/$(XFE_PROGNAME)-motif-export: $(OBJS) $(EXPORT_OBJS) $(EXPORT_DEPLIBS)
 	@$(MAKE_OBJDIR)
 	rm -f $@
-	$(CCLD) -o $@ $(LDFLAGS) $(OBJS) $(EXPORT_OBJS) $(BASIC_LIBS) $(EXPORT_LIB) $(BASIC_LIBS_2) -L/usr/X11R6/lib $(DYN_MOTIFLIB) -lXt -lSM -lICE $(XMULIB) $(EXTENSIONLIB) $(XLIB) /usr/lib/libm.a -ldl $(NSPR_LIB) $(DNS_LIB) -lc
+	$(CCLD) -o $@ $(LDFLAGS) $(OBJS) $(EXPORT_OBJS) $(BASIC_LIBS) $(EXPORT_LIB) $(BASIC_LIBS_2) -L/usr/X11R6/lib $(DYN_MOTIFLIB) -lXt -lSM -lICE $(XMULIB) $(EXTENSIONLIB) $(XLIB) -lm -ldl $(NSPR_LIB) $(DNS_LIB) -lc
 	@$(EXTRA_POST_LINK_CMD) $@
 endif
 

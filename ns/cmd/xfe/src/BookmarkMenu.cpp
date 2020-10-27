@@ -74,7 +74,7 @@ XFE_BookmarkMenu::generate(Widget		cascade,
 	object = new XFE_BookmarkMenu(XFE_BookmarkFrame::main_bm_context,
 								  cascade,
 								  frame,
-								  (int) clientData,
+								  (int)(long) clientData,
 								  True);
 }
 //////////////////////////////////////////////////////////////////////////
@@ -88,7 +88,7 @@ XFE_BookmarkMenu::generateQuickfile(Widget		cascade,
 	object = new XFE_BookmarkMenu(XFE_BookmarkFrame::main_bm_context,
 								  cascade,
 								  frame,
-								  (int) clientData,
+								  (int)(long) clientData,
 								  True);
 
 	// Store the BookmarkMenu instance in the quickfile button 

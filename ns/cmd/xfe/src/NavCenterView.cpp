@@ -99,7 +99,7 @@ XFE_NavCenterView::doCommand(CommandType cmd, void *calldata, XFE_CommandInfo*in
 {
   if (cmd == xfeCmdChangeRDFView)
     {
-      int viewNum = (int)calldata;
+      int viewNum = (int)(long)calldata;
       HT_View view = HT_GetNthView(m_pane,viewNum);
 
       setRDFView(view);
@@ -141,7 +141,7 @@ XFE_NavCenterView::commandToString(CommandType cmd, void* calldata,
 {
   if (cmd == xfeCmdChangeRDFView)
     {
-      int viewNum = (int)calldata;
+      int viewNum = (int)(long)calldata;
 
       return HT_GetViewName(HT_GetNthView(m_pane, viewNum));
     }

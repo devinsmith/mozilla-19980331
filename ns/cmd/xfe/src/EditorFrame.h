@@ -49,7 +49,7 @@ public:
   virtual char*   commandToString(CommandType cmd, void *calldata = NULL,
 						 XFE_CommandInfo* = NULL);
   virtual XFE_Command* getCommand(CommandType);
-  virtual Boolean XFE_EditorFrame::isCommandSelected(CommandType cmd, 
+  virtual Boolean isCommandSelected(CommandType cmd, 
 								  void* calldata, XFE_CommandInfo* info);
 
   // void    delete_response();

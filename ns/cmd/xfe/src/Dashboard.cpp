@@ -930,7 +930,7 @@ XFE_CALLBACK_DEFN(XFE_Dashboard, progressBarUpdatePercentNotice)
 	if (!XfeIsAlive(m_widget))
 		return;
 
-	setProgressBarPercent((int) callData);
+	setProgressBarPercent((int)(long) callData);
 }
 //////////////////////////////////////////////////////////////////////////
 XFE_CALLBACK_DEFN(XFE_Dashboard, progressBarUpdateTextNotice)

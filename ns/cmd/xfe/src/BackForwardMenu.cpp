@@ -96,7 +96,7 @@ XFE_BackForwardMenu::generate(Widget		cascade,
 {
 	XFE_BackForwardMenu * obj;
 	
-	obj = new XFE_BackForwardMenu(frame,cascade,(int) data);
+	obj = new XFE_BackForwardMenu(frame,cascade,(int)(long)data);
 }
 //////////////////////////////////////////////////////////////////////////
 

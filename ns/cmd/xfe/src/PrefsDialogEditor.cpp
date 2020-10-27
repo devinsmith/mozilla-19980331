@@ -727,7 +727,7 @@ void XFE_PrefsPageEditor::cb_changed(Widget    widget,
 				     XtPointer /* call_data */)
 {
 	PrefsDataEditor *w_data	= (PrefsDataEditor *)closure;
-    unsigned mask = (unsigned)fe_GetUserData(widget);
+    unsigned mask = (unsigned)(long)fe_GetUserData(widget);
 
 	w_data->changed |= mask;
 }
@@ -1721,7 +1721,7 @@ void XFE_PrefsPageEditorPublish::cb_changed(Widget    widget,
 {
 	PrefsDataEditorPublish *w_data	= (PrefsDataEditorPublish *)closure;
 
-	w_data->changed |= (unsigned)fe_GetUserData(widget);
+	w_data->changed |= (unsigned)(long)fe_GetUserData(widget);
 }
 
 // Member:       cb_changed

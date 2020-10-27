@@ -375,8 +375,8 @@ CTapeFSFile::OpenStream( intn iFileIndex ) {
     // bogus-- each file should have a flag telling it's time, but I don't
     // have time to redesign the #!$#@!#!@$ editor.
     XP_FilePerm filePerm = ((iFileIndex == 0) && (!IsFirstBinary())) ? 
-				XP_FILE_TRUNCATE : XP_FILE_TRUNCATE_BIN;
-    outFile = XP_FileOpen(pDestPath, xpURL, filePerm );
+      (char *)XP_FILE_TRUNCATE : (char *)XP_FILE_TRUNCATE_BIN;
+    outFile = XP_FileOpen(pDestPath, xpURL, (char *)filePerm );
     XP_FREE(pDestPath);
 
     if( outFile == 0 ){
@@ -657,10 +657,10 @@ CTapeFSPublish::OpenStream( intn iFileIndex ) {
     // Right, well now the first file may be text or binary. This is still
     // bogus-- each file should have a flag telling it's time, but I don't
     // have time to redesign the #!$#@!#!@$ editor.
-    XP_FilePerm filePerm = ((iFileIndex == 0) && (!IsFirstBinary())) ? 
-				XP_FILE_TRUNCATE : XP_FILE_TRUNCATE_BIN;
+    const char *filePerm = ((iFileIndex == 0) && (!IsFirstBinary())) ? 
+      XP_FILE_TRUNCATE : XP_FILE_TRUNCATE_BIN;
      outFile = XP_FileOpen(m_tempFilenames[iFileIndex],
-                 xpFileToPost, filePerm );
+                 xpFileToPost, (char *)filePerm );
 
     XP_TRACE(("XP_FileOpen handle = %d", outFile));
     

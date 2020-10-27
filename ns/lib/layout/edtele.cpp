@@ -5954,7 +5954,7 @@ void CEditContainerElement::PrintOpen( CPrintState *pPrintState ){
             if ( pData && pData->pExtra ) {
                 pPrintState->m_pOut->Printf( "\n");
                 if (ppState == 2) pPrintState->m_pOut->Printf( "\n");
-                char* pTagName = ppState == 2 ? "P" : "DIV";
+                const char* pTagName = ppState == 2 ? "P" : "DIV";
                 pPrintState->m_iCharPos = pPrintState->m_pOut->Printf( "<%s %s>", pTagName, pData->pExtra);
             }
         }
@@ -6261,7 +6261,7 @@ CEditListElement::~CEditListElement()
 PA_Tag* CEditListElement::TagOpen( int /* iEditOffset */ ){
     PA_Tag *pTag = XP_NEW( PA_Tag );
     XP_BZERO( pTag, sizeof( PA_Tag ) );
-    SetTagData( pTag, GetTagData() ? GetTagData() : ">" );
+    SetTagData( pTag, GetTagData() ? GetTagData() : (char *)">" );
     return pTag;
 }
 
@@ -9640,7 +9640,7 @@ void CEditTargetElement::SetData( EDT_TargetData *pData ){
         free(pNew);
     }
     // Set the spoof data for the icon.
-    CEditIconElement::SetSpoofData( pData->pName ? pData->pName : "" );
+    CEditIconElement::SetSpoofData( pData->pName ? pData->pName : (char *)"" );
 }
 
 char* CEditTargetElement::GetName(){

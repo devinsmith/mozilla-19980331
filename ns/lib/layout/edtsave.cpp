@@ -639,7 +639,7 @@ intn CFileSaveObject::OpenOutputFile(){
         return -1;
     }
 
-    XP_TRACE(("Opening stream number %d gives %d.", i, (int)m_pOutStream));
+    XP_TRACE(("Opening stream number %d gives %p.", i, m_pOutStream));
     
     if ( m_pOutStream == NULL ) {
         // No longer uses FE_SaveErrorContinueDialog()

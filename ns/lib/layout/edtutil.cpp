@@ -1099,7 +1099,7 @@ ED_Alignment edt_FetchParamAlignment( PA_Tag* pTag, ED_Alignment eDefault, XP_Bo
     char *str;
     ED_Alignment retVal = eDefault;
 
-    buff = PA_FetchParamValue(pTag, bVAlign ? PARAM_VALIGN : PARAM_ALIGN, csid);
+    buff = PA_FetchParamValue(pTag, bVAlign ? (char *)PARAM_VALIGN : (char *)PARAM_ALIGN, csid);
     if (buff != NULL)
     {
         XP_Bool floating;
@@ -1478,7 +1478,7 @@ void edt_AddTag( PA_Tag*& pStart, PA_Tag*& pEnd, TagType t, XP_Bool bIsEnd,
     XP_BZERO( pTag, sizeof( PA_Tag ) );
     pTag->type = t;
     pTag->is_end = bIsEnd;
-    edt_SetTagData(pTag, pTagData ? pTagData : ">" );
+    edt_SetTagData(pTag, pTagData ? pTagData : (char *)">" );
     if( pStart == 0 ){
         pStart = pTag;
     }

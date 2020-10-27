@@ -1988,7 +1988,7 @@ public:
 
     int Offset() { return m_iOffset; }
     CEditElement* Element() { return m_pElement; }
-    IsPositioned(){ return m_pElement != 0; }
+    bool IsPositioned(){ return m_pElement != 0; }
 };
 
 

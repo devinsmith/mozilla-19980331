@@ -33,7 +33,7 @@
 //    On Mac we are having troubles as well, so add me to the list.
 //    Now, why even have templates?...jar
 //
-#if ! ( defined(XP_WIN16) || defined(XP_UNIX) || defined(XP_MAC) )
+#if ! ( defined(XP_WIN16) || defined(XP_MAC) )
 #define TEMPLATE_SUPPORT    1
 #endif
 
@@ -195,8 +195,8 @@ public:
     TXP_PtrStack(): m_iTop(-1){}
     Bool IsEmpty(){ return m_iTop == -1; }
     void Push( PTRTYPE t ){ 
-        if( ++m_iTop >= Size() ) {
-            Add( t );
+        if( ++m_iTop >= this->Size() ) {
+            this->Add( t );
         }
         else {
             (*this)[m_iTop] = t;

@@ -54,11 +54,17 @@ static char fmi_attributes_type[] = {
 
 #define MAX_STANDARD_ATTRIBUTES (sizeof(fmi_attributes)/sizeof(*fmi_attributes))
 
+static void font_match_info_object_broken(wfList *object, void *item)
+{
+  fprintf(stderr, "THIS IS BROKEN\n");
+  exit(1);
+}
+
 FontMatchInfoObject::
 FontMatchInfoObject(const char *iname, const char *icharset,
 					const char *iencoding, jint iweight, jint ipitch,
 					jint istyle, jint iunderline, jint istrikeOut, jint resX, jint resY)
-					: wfList(free_fmi_attr_store), stringRepresentation(NULL),
+					: wfList(font_match_info_object_broken), stringRepresentation(NULL),
 					  stringLen(0), stringMaxLen(0)
 {
 	addAttribute(nfFmiName, iname);
@@ -76,7 +82,7 @@ FontMatchInfoObject(const char *iname, const char *icharset,
 
 FontMatchInfoObject::
 FontMatchInfoObject(const char *reconstructString)
-: wfList(free_fmi_attr_store), stringRepresentation(NULL),
+: wfList(font_match_info_object_broken), stringRepresentation(NULL),
   stringLen(0), stringMaxLen(0)
 {
 	reconstruct(reconstructString);
@@ -146,7 +152,7 @@ IsEquivalent(struct nffmi *fmi)
 		else
 		{
 			// FMI_TYPE_INT
-#ifdef OSF1
+#if defined(OSF1) || defined(__amd64__)
                         long fmi_int_value = (long)fmi_value;
                         long this_int_value = (long)this_value;
 #else

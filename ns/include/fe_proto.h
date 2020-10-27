@@ -886,7 +886,7 @@ extern void FE_RaiseWindow(MWContext *context);
  * if Chrome is NULL, the behaviour will exactly be as FE_MakeBlankWindow
  */
 extern MWContext *FE_MakeNewWindow(MWContext *old_context,
-	URL_Struct *url, char *window_name, Chrome *chrome);
+	URL_Struct *url, const char *window_name, Chrome *chrome);
 extern void FE_DestroyWindow(MWContext *context);
 
 #if defined(XP_WIN) || defined(XP_MAC) || defined(XP_OS2)

@@ -1373,7 +1373,7 @@ fe_MakeNewWindow(Widget toplevel, MWContext *context_to_copy,
 MWContext *
 FE_MakeNewWindow(MWContext  *old_context,
 		 URL_Struct *url,
-		 char       *window_name,
+		 const char       *window_name,
 		 Chrome     *chrome)
 {
   MWContext *   new_context;

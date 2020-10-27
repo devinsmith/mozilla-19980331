@@ -37,8 +37,8 @@ PRIVATE XP_List* prefetch_list = 0;
 #define USER_SETTING 0.0 /* TODO Change this to read off of the prefs.js file */
 
 MODULE_PRIVATE void pre_FreePrefetchURLStruct(PrefetchURLStruct *pus);
-MODULE_PRIVATE Bool pre_OKToPrefetch(char* url);
-MODULE_PRIVATE void pre_Finished(URL_Struct* url_struct, int status, MWContext* context);
+static Bool pre_OKToPrefetch(char* url);
+static void pre_Finished(URL_Struct* url_struct, int status, MWContext* context);
 
 PRIVATE XP_Bool pre_enabled = TRUE;
 PRIVATE int pre_LockNormalizeAndSort(); 
@@ -121,7 +121,7 @@ PRE_Fetch(MWContext* context)
 /*	Returns bool to indicate if its OK to prefetch the specified URL.
 	we don't prefetch mailto:, file:, etc. 
 */
-PRIVATE Bool
+static Bool
 pre_OKToPrefetch(char* url)
 {
 	int type;
@@ -177,7 +177,7 @@ pre_FreePrefetchURLStruct(PrefetchURLStruct *pus)
       }
 }
 
-PRIVATE void
+static void
 pre_Finished(URL_Struct* url_struct, int status, MWContext* context)
 {
 	/* this should change to update the colors of 

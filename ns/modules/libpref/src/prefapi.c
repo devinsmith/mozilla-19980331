@@ -121,8 +121,10 @@ pref_FreeEntry(void *pool, PRHashEntry *he, uint flag)
 	}
 
     if (flag == HT_FREE_ENTRY) {
-		XP_FREEIF((void *)he->key);
-        XP_FREE(he);
+      if (he->key != NULL) {
+        XP_FREE((void *)he->key);
+      }
+      XP_FREE(he);
 	}
 }
 

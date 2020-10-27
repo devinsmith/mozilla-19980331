@@ -12,11 +12,13 @@ This is a version of Mozilla with the [Mariner layout engine](https://en.wikiped
 
 # Modifications
 
-The original release of mozilla has a GCC 2.7.2 requirement, but these days we
-are using newer compilers. This repo still compiles using the C++98 standard
-(and there's no C++11 here)
-but GCC 2.7.2 was a bit more "forgiving" about the C++ that was considered
-valid and so small changes have been made to get it to work on newer compilers.
+The original release of mozilla specified a GCC 2.7.2 requirement. This is a
+very old C++ compiler that is not even C++98 complient. ``__cplusplus`` is
+defined as "1" for this compiler.
+
+In order to target modern systems some modifications were made to this repo.
+Since GCC 2.7.2 is pre-C++98, some code compiled in C++98 throws errors so
+we have made minimal changes to try to get it compiling with C++98.
 
 The other change we've made is allowing this to be built on the amd64/x86\_64
 architecture.

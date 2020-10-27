@@ -23,3 +23,7 @@ we have made minimal changes to try to get it compiling with C++98.
 The other change we've made is allowing this to be built on the amd64/x86\_64
 architecture.
 
+# Screenshot
+
+![Startup](img/mozilla_19980331.png)
+

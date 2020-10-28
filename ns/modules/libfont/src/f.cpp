@@ -27,16 +27,9 @@
 #include "f.h"
 #include "nf.h"
 
-static void font_object_broken(wfList *object, void *item)
-{
-  fprintf(stderr, "THIS IS BROKEN\n");
-  exit(1);
-}
-
-
 FontObject::
 FontObject(struct nff *f, struct nfrc *irc, const char *url)
-		   : self(f), inGC(0), wfList(font_object_broken), iswebfont(0), state(NF_FONT_COMPLETE), shared(1)
+		   : self(f), inGC(0), wfList(free_fh_store), iswebfont(0), state(NF_FONT_COMPLETE), shared(1)
 {
 	m_rcMajorType = nfrc_GetMajorType(irc, NULL);
 	m_rcMinorType = nfrc_GetMinorType(irc, NULL);

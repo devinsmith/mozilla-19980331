@@ -54,17 +54,11 @@ static char fmi_attributes_type[] = {
 
 #define MAX_STANDARD_ATTRIBUTES (sizeof(fmi_attributes)/sizeof(*fmi_attributes))
 
-static void font_match_info_object_broken(wfList *object, void *item)
-{
-  fprintf(stderr, "THIS IS BROKEN\n");
-  exit(1);
-}
-
 FontMatchInfoObject::
 FontMatchInfoObject(const char *iname, const char *icharset,
 					const char *iencoding, jint iweight, jint ipitch,
 					jint istyle, jint iunderline, jint istrikeOut, jint resX, jint resY)
-					: wfList(font_match_info_object_broken), stringRepresentation(NULL),
+					: wfList(free_fmi_attr_store), stringRepresentation(NULL),
 					  stringLen(0), stringMaxLen(0)
 {
 	addAttribute(nfFmiName, iname);
@@ -82,7 +76,7 @@ FontMatchInfoObject(const char *iname, const char *icharset,
 
 FontMatchInfoObject::
 FontMatchInfoObject(const char *reconstructString)
-: wfList(font_match_info_object_broken), stringRepresentation(NULL),
+: wfList(free_fmi_attr_store), stringRepresentation(NULL),
   stringLen(0), stringMaxLen(0)
 {
 	reconstruct(reconstructString);

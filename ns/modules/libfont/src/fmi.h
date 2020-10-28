@@ -52,6 +52,8 @@ struct fmi_attr_store {
   } u;
 };
 
+void free_fmi_attr_store (wfList *object, void *item);
+
 class FontMatchInfoObject : public wfList {
 protected:
   // A string representation of this FMI

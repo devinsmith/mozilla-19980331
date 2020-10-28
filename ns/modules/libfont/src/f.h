@@ -48,6 +48,8 @@ struct fh_store {
   wfSizesList sizesList;
 };
 
+void free_fh_store(wfList *object, void *item);
+
 class FontObject : public wfList {
 private:
   // The nff that has this FontObject. This is reverse mapping

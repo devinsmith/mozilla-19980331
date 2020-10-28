@@ -2049,22 +2049,24 @@ void BM_RemoveChildFromHeader(MWContext* context, BM_Entry* parent, BM_Entry* ch
 static uint16
 bm_tokenize_line(MWContext* context, char* buffer, char** ptr)
 {
-  if ((*ptr = strcasestr(buffer, "HREF=\""))) {
-	return context->type == MWContextBookmarks ? BM_TYPE_URL : BM_TYPE_ADDRESS;
-  } else if ((*ptr = strcasestr(buffer, "<H")) && isdigit(*(*ptr + 2))) {
-	return BM_TYPE_HEADER;
-  } else if ((*ptr = strcasestr(buffer, "<HR>"))) {
-	return BM_TYPE_SEPARATOR;
-  } else if (strcasestr(buffer, "</UL>") ||
-			 strcasestr(buffer, "</MENU>") ||
-			 strcasestr(buffer, "</DL>")) {
-	return BM_HEADER_END;
-  } else if (strcasestr(buffer, "<UL>") ||
-			 strcasestr(buffer, "<MENU>") ||
-			 strcasestr(buffer, "<DL>")) {
-	return BM_HEADER_BEGIN;
+  char *ret;
+
+  if ((*ptr = xp_strcasestr(buffer, "HREF=\""))) {
+    return context->type == MWContextBookmarks ? BM_TYPE_URL : BM_TYPE_ADDRESS;
+  } else if ((*ptr= xp_strcasestr(buffer, "<H")) && isdigit(*(*ptr + 2))) {
+    return BM_TYPE_HEADER;
+  } else if ((*ptr = xp_strcasestr(buffer, "<HR>"))) {
+    return BM_TYPE_SEPARATOR;
+  } else if (xp_strcasestr(buffer, "</UL>") ||
+     xp_strcasestr(buffer, "</MENU>") ||
+     xp_strcasestr(buffer, "</DL>")) {
+    return BM_HEADER_END;
+  } else if (xp_strcasestr(buffer, "<UL>") ||
+     xp_strcasestr(buffer, "<MENU>") ||
+     xp_strcasestr(buffer, "<DL>")) {
+    return BM_HEADER_BEGIN;
   } else {
-	return BM_UNKNOWN;
+    return BM_UNKNOWN;
   }
 }
 
@@ -2086,7 +2088,7 @@ bm_addition_date(char* buffer)
 
 	XP_ASSERT(buffer);
 
-	ptr = strcasestr(buffer, "ADD_DATE=\"");
+	ptr = xp_strcasestr(buffer, "ADD_DATE=\"");
 	if (ptr)
 	{
 		/* find the end of the addition date */
@@ -2114,7 +2116,7 @@ bm_last_date(char* buffer, XP_Bool ismodified)
 	char* end;
 	time_t result = 0;
 
-	ptr = strcasestr(buffer,
+	ptr = xp_strcasestr(buffer,
 		ismodified ? "LAST_MODIFIED=\"": "LAST_VISIT=\"");
 	if (ptr) {
 		start = ptr + (ismodified ? 15 : 12);
@@ -2142,7 +2144,7 @@ bm_target(char* buffer, XP_Bool ismodified)
 	char* end;
 	char *result = NULL;
 
-	ptr = strcasestr(buffer, "TARGET=\"");
+	ptr = xp_strcasestr(buffer, "TARGET=\"");
 	if (ptr) {
 		start = ptr + 8;
 		end = XP_STRCHR(start, '"');
@@ -2246,7 +2248,7 @@ bm_check_read_alias(MWContext* context, BM_Entry* new_item, char* parseString)
 {
   char* ptr;
   char* end = NULL;
-  ptr = strcasestr(parseString, "ALIASID=\"");
+  ptr = xp_strcasestr(parseString, "ALIASID=\"");
   if (ptr) {
 	ptr += 9;
 	end = XP_STRCHR(ptr, '"');
@@ -2275,7 +2277,7 @@ bm_check_read_alias(MWContext* context, BM_Entry* new_item, char* parseString)
 	  BM_SETFLAG(new_item, BM_ATTR_HASALIASES);
 	}
   } else {
-	ptr = strcasestr(parseString, "ALIASOF=\"");
+	ptr = xp_strcasestr(parseString, "ALIASOF=\"");
 	if (ptr) {
 	  ptr += 9;
 	  end = XP_STRCHR(ptr, '"');
@@ -2308,7 +2310,7 @@ bm_check_read_alias(MWContext* context, BM_Entry* new_item, char* parseString)
 static void
 bm_check_nickname(MWContext* context, BM_Entry* entry, char* str)
 {
-  char* ptr = strcasestr(str, "NICKNAME=\"");
+  char* ptr = xp_strcasestr(str, "NICKNAME=\"");
   char* end;
   if (ptr) {
 	ptr += 10;
@@ -2387,7 +2389,7 @@ bm_read_url(MWContext* context, XP_File fp, char* buffer, char* ptr,
 	gtr_than = XP_STRCHR(endQuote + 1, '>');
 	if (gtr_than) {
 	  /* find the end of the name */
-	  end = strcasestr(gtr_than, "</A>");
+	  end = xp_strcasestr(gtr_than, "</A>");
 	  if (end) {
 		*end = '\0';
 		StrAllocCopy(new_item->name, XP_StripLine(gtr_than + 1));
@@ -2401,7 +2403,7 @@ bm_read_url(MWContext* context, XP_File fp, char* buffer, char* ptr,
 		/* what happens if this breaks??  this is bogus stuff I don't
 		   know what to do with */
 		XP_FileReadLine(buffer, READ_BUFFER_SIZE, fp);
-		end = strcasestr(buffer, "</A>");
+		end = xp_strcasestr(buffer, "</A>");
 
 		if (end) *end = '\0';
 
@@ -2464,7 +2466,7 @@ bm_read_address(MWContext* context, XP_File fp, char* buffer, char* ptr)
 	if (gtr_than) {
 	  *gtr_than++ = '\0';
 	  /* find the end of the name */
-	  end = strcasestr(gtr_than, "</A>");
+	  end = xp_strcasestr(gtr_than, "</A>");
 	  if (end) {
 		*end = '\0';
 		StrAllocCopy(new_item->name, XP_StripLine(gtr_than));
@@ -2499,7 +2501,7 @@ bm_read_header(MWContext* context, char* buffer, char* ptr)
 
   /* find the end of the name */
   if (gtr_than) {
-	end = strcasestr(gtr_than, "</H");
+    end = xp_strcasestr(gtr_than, "</H");
   }
 
   if (gtr_than && end) {
@@ -2528,8 +2530,8 @@ bm_read_header(MWContext* context, char* buffer, char* ptr)
 	  if (context->type == MWContextAddressBook) {
 		bm_check_nickname(context, new_item, buffer);
 	  } else {
-		if (strcasestr(buffer, "MENUHEADER")) f->menuheader = new_item;
-		if (strcasestr(buffer, "NEWITEMHEADER")) f->addheader = new_item;
+		if (xp_strcasestr(buffer, "MENUHEADER")) f->menuheader = new_item;
+		if (xp_strcasestr(buffer, "NEWITEMHEADER")) f->addheader = new_item;
 	  }
 	}
 

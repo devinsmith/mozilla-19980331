@@ -113,35 +113,32 @@ xp_toupper(int c)
 /* find a substring within a string with a case insensitive search
  */
 PUBLIC const char *
-XP_strcasestr (const char * str, const char * substr)
+xp_strcasestr(const char * str, const char * substr)
 {
-    register const char *pA;
-    register const char *pB;
-    register const char *pC;
-	uint8 *toupper_table = xp_get_toupper_table();
+  const char *pA;
+  const char *pB;
+  const char *pC;
+  uint8 *toupper_table = xp_get_toupper_table();
 
-	if(!str)
-		return(NULL);
-	
-	for(pA=str; *pA; pA++)
-	  {
-		if(XP_STR_TOUPPER(*pA) == XP_STR_TOUPPER(*substr))
-		  {
-    		for(pB=pA, pC=substr; ; pB++, pC++)
-              {
-                if(!(*pC))
-                    return((char *)pA);
+  if(!str)
+    return(NULL);
 
-				if(!(*pB))
-					break;
+  for (pA=str; *pA; pA++) {
+    if (XP_STR_TOUPPER(*pA) == XP_STR_TOUPPER(*substr)) {
+      for (pB=pA, pC=substr; ; pB++, pC++) {
+        if (!(*pC))
+          return((char *)pA);
 
-				if(XP_STR_TOUPPER(*pB) != XP_STR_TOUPPER(*pC))
-					break;
-              }
-		  }
-	  }
+        if (!(*pB))
+          break;
 
-	return(NULL);
+        if (XP_STR_TOUPPER(*pB) != XP_STR_TOUPPER(*pC))
+          break;
+      }
+    }
+  }
+
+  return(NULL);
 }
 
 /* find a char within a specified length string

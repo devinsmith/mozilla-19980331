@@ -16,6 +16,6 @@
 #
 
 DEPTH	= ..
-DIRS	= xfe patcher
+DIRS	= xfe
 
 include $(DEPTH)/config/rules.mk
